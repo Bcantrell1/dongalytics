@@ -1,6 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import passport from '../../../lib/passport';
-import router from '../../../lib/router';
+import passport from '../../../server/passport/config';
+import router from '../../../server/passport/router';
 
 const path = '/api/auth/login';
 

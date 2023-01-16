@@ -1,7 +1,6 @@
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import CheckSteamId from "../components/element/checkSteamId";
-import { api } from "../utils/api";
 
 const Home = () => {
   const { data: session } = useSession();

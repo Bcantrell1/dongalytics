@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import passport from '../../../lib/passport';
-import router from '../../../lib/router';
+import passport from '../../../server/passport/config';
+import router from '../../../server/passport/router';
 import { authOptions } from '../auth/[...nextauth]';
 import { unstable_getServerSession } from "next-auth/next"
 import { steamID64toSteamID32 } from '../../../helpers/convert';

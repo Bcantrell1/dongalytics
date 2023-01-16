@@ -1,12 +1,12 @@
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { api } from "../../utils/api";
 
 const CheckSteamId = () => {
-  const steamId = api.user.getSteamId.useQuery(undefined);
- 
+  const { data: session } = useSession();
+
   return ( 
     <div> 
-      { steamId.data ? 
+      { session?.user?.steamId ? 
 	null
 	: 
 	<div className="hero rounded" style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}>

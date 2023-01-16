@@ -5,17 +5,24 @@ export const userRouter = createTRPCRouter({
 
     getSteamId: protectedProcedure
       .query(async({ ctx }) => {
+        if (!ctx.session.user) return null; 
+
         const user = await ctx.prisma.user.findUnique({
           where: {
             id: ctx.session.user.id, 
           },
         });
-        return user.steamId;
+        
+        if(user) return user.steamId;
+
+        return null;
       }),
-    
+ 
     setSteamId: protectedProcedure
       .input(z.object({ steamId: z.string() }))
       .mutation(async({ ctx, input }) => {
+        if (!ctx.session.user) return null;
+
         const user = await ctx.prisma.user.update({
           where: {
             id: ctx.session.user.id, 
@@ -24,7 +31,10 @@ export const userRouter = createTRPCRouter({
             steamId: input.steamId,
           },
         });
-        return user.steamId;
+
+        if(user) return user.steamId;
+
+        return null;
       }),
-  
+
 });

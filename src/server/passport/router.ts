@@ -1,6 +1,6 @@
+import passport from '../passport/config'
 import { NextApiRequest, NextApiResponse } from 'next';
 import nextConnect from 'next-connect';
-import passport from './passport';
 import session from 'express-session';
 
 const router = nextConnect<NextApiRequest, NextApiResponse>();

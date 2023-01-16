@@ -1,12 +1,13 @@
 import passport from 'passport';
 import { Strategy as SteamStrategy } from 'passport-steam';
-import { env } from '../env/server.mjs';
+import { env } from '../../env/server.mjs';
+import { prisma } from '../../server/db';
 
-passport.serializeUser(function(user, done) {
+passport.serializeUser(function(user: any, done: any) {
 	done(null, user);
 });
-  
-passport.deserializeUser(function(obj: any, done) {
+
+passport.deserializeUser(function(obj: any, done: any) {
 	done(null, obj);
 });
 
@@ -14,7 +15,7 @@ passport.use(new SteamStrategy({
 	returnURL: `http://localhost:3000/api/auth/return`,
 	realm: `http://localhost:3000`,
 	apiKey: env.STEAM_API_KEY
-}, async(_: any, profile: any, done: any) => {
+}, async (_: any, profile: any, done: any) => {
 	const userData = {
 		id: profile.id,
 		displayName: profile.displayName,
@@ -22,19 +23,19 @@ passport.use(new SteamStrategy({
 		profileurl: profile._json.profileurl,
 	};
 
-    let user = await prisma.user.findFirst({
-        where: {
-            steamId: userData.id
-        }
-    });
-    
-    if (user) {
-        console.log('already a user');
-    } else {
-        console.log('new user');
-    }
+	let user = await prisma.user.findFirst({
+		where: {
+			steamId: userData.id
+		}
+	});
 
-     return done(null, userData);
+	if (user) {
+		console.log('already a user');
+	} else {
+		console.log('new user');
+	}
+
+	return done(null, userData);
 }));
 
 export default passport;
