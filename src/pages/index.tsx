@@ -1,9 +1,6 @@
-import { useSession } from "next-auth/react";
 import Head from "next/head";
-import CheckSteamId from "../components/element/checkSteamId";
 
 const Home = () => {
-  const { data: session } = useSession();
  
   return (
     <>
@@ -18,7 +15,6 @@ const Home = () => {
             Dong<span className="text-primary">alytics</span>
           </h1>  
         </div>
-        { session && <CheckSteamId /> }
       </div>
     </>
   );

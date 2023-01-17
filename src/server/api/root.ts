@@ -1,7 +1,7 @@
 import { createTRPCRouter } from "./trpc";
 import { discordRouter } from "./routers/discord";
 import { userRouter } from "./routers/user";
-import { steamRouter } from "./routers/steam";
+import { openDotaRouter } from "./routers/openDota";
 
 /**
  * This is the primary router for your server.
@@ -10,7 +10,7 @@ import { steamRouter } from "./routers/steam";
  */
 export const appRouter = createTRPCRouter({
   discord: discordRouter,
-  steam: steamRouter,
+  openDota: openDotaRouter,
   user: userRouter,
 });
 

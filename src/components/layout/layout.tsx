@@ -7,7 +7,7 @@ function Layout({ children }:{ children: ReactNode }): JSX.Element {
       <div className="h-full">
         <div className="min-h-full">
           <Navbar />
-            <main className='mx-auto max-w-7xl py-6 sm:px-6 lg:px-8'>{children}</main>
+            <main className='min-h-screen mx-auto max-w-7xl'>{children}</main>
           <Footer />
         </div>
       </div>

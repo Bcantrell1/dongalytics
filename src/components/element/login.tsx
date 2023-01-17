@@ -15,8 +15,7 @@ const Login = () => {
 	  <button onClick={() => void signIn()} className="btn btn-primary">Login</button>
 	</div>
 	)
-	: null }
-	{ !session?.user?.steamId && <CheckSteamId /> }
+	: !session?.user?.steamId && <CheckSteamId /> }
       </div>
     </div>
   );

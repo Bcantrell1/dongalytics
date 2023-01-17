@@ -9,7 +9,7 @@ const Navbar: NextPage = () => {
   return (
     <div className="navbar bg-neutral">
       <div className="flex-1">
-        <Link href={'/'} className="btn normal-case text-xl">Dongalytics</Link>
+        <Link href={'/'} className="btn glass border-none normal-case text-xl">Dongalytics</Link>
       </div>
       {
         sessionData ? (
@@ -32,7 +32,7 @@ const Navbar: NextPage = () => {
         </div>
       </div>
       ) : (
-        <Link href={''} onClick={()=> void signIn()}>Sign In</Link>
+        <Link className="btn btn-primary" href={''} onClick={()=> void signIn()}>Sign In</Link>
         )
       }
     </div>
