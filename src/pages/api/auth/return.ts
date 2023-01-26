@@ -1,15 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { unstable_getServerSession } from "next-auth/next";
+import { steamID64toSteamID32 } from '../../../helpers/convert';
+import { prisma } from '../../../server/db';
 import passport from '../../../server/passport/config';
 import router from '../../../server/passport/router';
 import { authOptions } from '../auth/[...nextauth]';
-import { unstable_getServerSession } from "next-auth/next"
-import { steamID64toSteamID32 } from '../../../helpers/convert';
-import { prisma } from '../../../server/db';
 
 const path = '/api/auth/return';
 
 export default router
-	.use(path, passport.authenticate('steam', { failureRedirect: '/' }))
+	.use(path, passport.authenticate('steam', { failureRedirect: '/login' }))
 	.get(path, async (req: NextApiRequest, res: NextApiResponse) => {
 		const session = await unstable_getServerSession(req, res, authOptions);
 		const { user } = session;
@@ -29,5 +29,5 @@ export default router
 			});
 		}
 
-		res.redirect("/");
+		res.redirect("/profile");
 	});

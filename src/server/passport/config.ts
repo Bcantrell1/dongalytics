@@ -12,10 +12,13 @@ passport.deserializeUser(function(obj: any, done: any) {
 });
 
 passport.use(new SteamStrategy({
-	returnURL: `http://localhost:3000/api/auth/return`,
-	realm: `http://localhost:3000`,
+	returnURL: 'http://localhost:3000/api/auth/return',
+	realm: 'http://localhost:3000',
 	apiKey: env.STEAM_API_KEY
-}, async (_: any, profile: any, done: any) => {
+}, async (identifier: any, profile: any, done: any) => {
+	console.log('identifier', identifier);
+	console.log('profile', profile);
+	profile.identifier = identifier;
 	const userData = {
 		id: profile.id,
 		displayName: profile.displayName,

@@ -1,23 +1,25 @@
 import { useSession } from "next-auth/react";
-import Link from "next/link";
+import ButtonBlue from "../components/atoms/ButtonBlue";
 
 export default function custom404() {
   const { data: session } = useSession();
 
   return (
-    <div className="hero min-h-screen">
-      <div className="hero-content flex-col lg:flex-row">
-        <img src="/img/banana_primary.svg" className="max-w-sm rounded-lg" />
-        <div>
-          <h1 className="text-5xl text-accent font-bold">404</h1>
-          <p className="py-6">This page doesnt exist, how did you find yourself here?</p>
-          {session ? (
-            <Link href="/profile" className="btn btn-accent glass">Back To Profile</Link>
-            ) : (
-            <Link href="/" className="btn text-accent glass">Back Home</Link>
-          )}
-        </div>
+    <main className="grid h-screen px-4 bg-white place-content-center">
+      <div className="text-center">
+        <h1 className="font-black text-gray-200 text-9xl">404</h1>
+
+        <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          Uh-oh!
+        </p>
+
+        <p className="mt-4 text-gray-500">We can't find that page.</p>
+        {session ? (
+          <ButtonBlue route="/profile">Back To Profile</ButtonBlue>
+        ) : (
+          <ButtonBlue route="/">Back Home</ButtonBlue>
+        )}
       </div>
-    </div>
+    </main>
   );
 };

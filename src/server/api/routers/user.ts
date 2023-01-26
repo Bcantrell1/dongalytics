@@ -1,5 +1,5 @@
-import { createTRPCRouter, publicProcedure, protectedProcedure } from '../trpc';
 import { z } from 'zod';
+import { createTRPCRouter, protectedProcedure, publicProcedure } from '../trpc';
 
 export const userRouter = createTRPCRouter({
 
@@ -36,5 +36,23 @@ export const userRouter = createTRPCRouter({
 
         return null;
       }),
+
+		deleteSteamId: protectedProcedure
+			.mutation(async({ ctx }) => {
+				if (!ctx.session.user) return null;
+
+				const user = await ctx.prisma.user.update({
+					where: {
+						id: ctx.session.user.id, 
+					},
+					data: {
+						steamId: null,
+					},
+				});
+
+				if(user) return user.steamId;
+
+				return null;
+			}),
 
 });

@@ -1,24 +1,34 @@
-import { useSession } from 'next-auth/react';
-import Login from '../../components/element/login';
+import type { GetServerSideProps } from 'next';
+import ProfileHeader from '../../components/molecules/ProfileHeader';
+import { getServerAuthSession } from '../../server/auth';
 
 const Profile = () => {
-  const { data: session } = useSession();
 
-  console.log(session);
+ return (
+    <main>
+      <ProfileHeader settings={false}/>
+    </main>
+  );
 
-  if (!session || !session.user?.steamId) {
-
-    return <Login />
-
-  } else {
-
-    return (
-      <div>
-        Proflie
-      </div>
-    );
-
-  }
 };
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getServerAuthSession(context);
+
+  if(!session || !session?.user?.steamId) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: {
+      session,
+    },
+  }
+}
 
 export default Profile;

@@ -4,5 +4,5 @@ import router from '../../../server/passport/router';
 const path = '/api/auth/login';
 
 export default router	
-	.use(path, passport.authenticate('steam', { failureRedirect: '/'}))
-	.get(path, (_, res) => res.redirect('/'));
+	.use(path, passport.authenticate('steam', { failureRedirect: '/login'}))
+	.get(path, (_, res) => res.redirect('/login'));
