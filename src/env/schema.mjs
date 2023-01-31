@@ -23,6 +23,7 @@ export const serverSchema = z.object({
   DISCORD_CLIENT_SECRET: z.string(),
   DISCORD_BOT_TOKEN: z.string(),
   STEAM_API_KEY: z.string(),
+  OPENDOTA_API_URL: z.string(),
 });
 
 /**
@@ -39,6 +40,7 @@ export const serverEnv = {
   DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
   DISCORD_BOT_TOKEN: process.env.DISCORD_BOT_TOKEN,
   STEAM_API_KEY: process.env.STEAM_API_KEY,
+  OPENDOTA_API_URL: process.env.OPENDOTA_API_URL,
 };
 
 /**
@@ -48,6 +50,7 @@ export const serverEnv = {
  */
 export const clientSchema = z.object({
   // NEXT_PUBLIC_CLIENTVAR: z.string(),
+  NEXT_PUBLIC_STEAM_IMG_URL: z.string(),
 });
 
 /**
@@ -58,4 +61,5 @@ export const clientSchema = z.object({
  */
 export const clientEnv = {
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+  NEXT_PUBLIC_STEAM_IMG_URL: process.env.NEXT_PUBLIC_STEAM_IMG_URL,
 };

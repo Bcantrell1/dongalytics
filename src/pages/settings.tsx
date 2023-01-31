@@ -11,7 +11,7 @@ const SettingsPage: NextPage = () => {
   );
 };
 
-export async function getServerSideProps(context: any): Promise<any> {
+export async function getServerSideProps(context: any) {
   const session = await getServerAuthSession(context);
 
   if (!session || !session?.user?.steamId) {

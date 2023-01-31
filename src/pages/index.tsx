@@ -15,7 +15,7 @@ const HomePage = () => {
           <h1 className="text-3xl font-extrabold sm:text-5xl">
             The Real Way..
             <strong className="font-extrabold text-indigo-600 sm:block">
-              To Measure Your Dong
+              To Measure Your Dong (turbo)
             </strong>
           </h1>
 

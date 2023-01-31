@@ -44,9 +44,9 @@ const Navbar: NextPage = () => {
         </NavButton>
 
         <NavButton
-          href="/heros"
+          href="/heroes"
         >
-          Heros
+          Heroes
         </NavButton>
 
         <NavButton

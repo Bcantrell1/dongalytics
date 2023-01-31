@@ -1,24 +1,14 @@
 import { api } from "../../utils/api";
-import Loading from "../atoms/Loading";
-import { useState } from "react";
 import { signOut } from "next-auth/react";
 
-const ProfileHeader = ({ settings }: { settings: boolean }) => {
-  const profile = api.openDota.getProfile.useQuery();
-  const { data: dotaProfile } = profile;
+const ProfileHeader = ({ personaname, settings }: { personaname: string, settings: boolean }) => {
   const deleteSteamId = api.user.deleteSteamId.useMutation();
-  const [loading, setLoading] = useState(false);
 
   function handleDeleteSteamId(): void {
-    setLoading(true);
     deleteSteamId.mutate();
     setTimeout(() => {
       window.location.reload();
     }, 4000);
-  }
-
-  if (profile.isLoading || loading) {
-    return <Loading />;
   }
 
   return (
@@ -27,7 +17,7 @@ const ProfileHeader = ({ settings }: { settings: boolean }) => {
         <div className="sm:flex sm:items-center sm:justify-between">
           <div className="text-center sm:text-left">
             <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-              {settings ? 'Account Settings' : 'Welcome Back'}, {dotaProfile?.profile?.personaname}
+              {settings ? 'Account Settings' : 'Welcome Back'}, {personaname}
             </h1>
           </div>
           {settings && (

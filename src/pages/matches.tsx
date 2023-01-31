@@ -1,4 +1,6 @@
-const MatchesPage = () => {
+import { NextPage } from "next";
+
+const MatchesPage: NextPage = () => {
   
   return (
     <main>

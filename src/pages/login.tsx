@@ -1,8 +1,9 @@
+import { NextPage } from "next";
 import { useSession } from "next-auth/react";
 import SteamLink from "../components/molecules/SteamLink";
 import UserLogin from "../components/molecules/UserLogin";
 
-const LoginPage = () => {
+const LoginPage: NextPage = () => {
 	const { data: session } = useSession();
 	
 	return (
