@@ -1,16 +1,19 @@
 import { type NextPage } from "next";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import DiscordButton from "../atoms/DiscordButton";
 import NavButton from "../atoms/NavButton";
+import { useOutsideAlerter } from "../../helpers/hooks";
 
 const Navbar: NextPage = () => {
   const { data: sessionData } = useSession();
   const [open, setOpen] = useState(false);
+  const node = useRef(null);
+  useOutsideAlerter({ ref: node, callback: () => setOpen(false) });
 
   return (
-    <header className="border-b bg-gray-100">
+    <header ref={node} className="border-b bg-gray-100">
       <div className="mx-auto flex h-16 max-w-screen-2xl items-center justify-between sm:px-6 lg:px-8">
         <div className="flex items-center">
           <button type="button" onClick={() => setOpen(!open)} className="p-2 sm:mr-4 lg:hidden">

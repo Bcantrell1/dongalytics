@@ -9,7 +9,7 @@ import HeroImage from "../components/atoms/HeroImage";
 import HeroLayout from "../components/molecules/HeroLayout";
 
 const HeroesPage: NextPage = () => {
-  const heroAttributes = api.openDota.getHeroes.useQuery();
+  const heroAttributes = api.openDota.getConstHeroes.useQuery();
   const { data, error, isLoading } = heroAttributes;
   const toArrayData: THero[] = Object.values(data || {});
 
@@ -68,6 +68,7 @@ const HeroesPage: NextPage = () => {
                 return 0;
               }).map((hero) => (
                 <HeroImage
+                  key={hero.id}
                   image={hero.img}
                   id={hero.id.toString()}
                   match={match.includes(formatHeroName(hero.localized_name)) ? 'opacity-100' : 'opacity-40'}

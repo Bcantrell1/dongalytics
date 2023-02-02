@@ -1,3 +1,6 @@
+import { GameMode } from "../types/dota";
+
+//Thanks cjdomacena for the constants!
 export const FORMATTED_HEROES: string[] = [
   "nature's prophet",
   "outworld devourer",
@@ -134,3 +137,116 @@ export const FORMATTED_HEROES: string[] = [
   "lifestealer",
   "wraith king",
 ];
+
+export const GAME_MODES: { [key: string]: GameMode} = {
+  "0": {
+    id: 0,
+    name: "unknown",
+    balanced: true,
+  },
+  "1": {
+    id: 1,
+    name: "all_pick",
+    balanced: true,
+  },
+  "2": {
+    id: 2,
+    name: "captains_mode",
+    balanced: true,
+  },
+  "3": {
+    id: 3,
+    name: "random_draft",
+    balanced: true,
+  },
+  "4": {
+    id: 4,
+    name: "single_draft",
+    balanced: true,
+  },
+  "5": {
+    id: 5,
+    name: "all_random",
+    balanced: true,
+  },
+  "6": {
+    id: 6,
+    name: "intro",
+  },
+  "7": {
+    id: 7,
+    name: "diretide",
+  },
+  "8": {
+    id: 8,
+    name: "reverse_captains_mode",
+  },
+  "9": {
+    id: 9,
+    name: "greeviling",
+  },
+  "10": {
+    id: 10,
+    name: "tutorial",
+  },
+  "11": {
+    id: 11,
+    name: "mid_only",
+  },
+  "12": {
+    id: 12,
+    name: "least_played",
+    balanced: true,
+  },
+  "13": {
+    id: 13,
+    name: "limited_heroes",
+  },
+  "14": {
+    id: 14,
+    name: "compendium_matchmaking",
+  },
+  "15": {
+    id: 15,
+    name: "custom",
+  },
+  "16": {
+    id: 16,
+    name: "captains_draft",
+    balanced: true,
+  },
+  "17": {
+    id: 17,
+    name: "balanced_draft",
+    balanced: true,
+  },
+  "18": {
+    id: 18,
+    name: "ability_draft",
+  },
+  "19": {
+    id: 19,
+    name: "event",
+  },
+  "20": {
+    id: 20,
+    name: "all_random_death_match",
+  },
+  "21": {
+    id: 21,
+    name: "1v1_mid",
+  },
+  "22": {
+    id: 22,
+    name: "all_draft",
+    balanced: true,
+  },
+  "23": {
+    id: 23,
+    name: "turbo",
+  },
+  "24": {
+    id: 24,
+    name: "mutation",
+  },
+};

@@ -127,6 +127,12 @@ export enum Attributes {
   int = "Intelligence",
 }
 
+export interface GameMode {
+  id: number;
+  name: string;
+  balanced?: boolean;
+}
+
 export type THeroStat = {
   hasTooltip: boolean;
   tooltipInfo: string;
@@ -143,6 +149,25 @@ export type THeroAbilities = {
   };
 };
 
+export type TMatchStats = {
+  match_id: number,
+  player_slot: number,
+  radiant_win: boolean,
+  hero_id: number,
+  duration: number,
+  game_mode: number,
+  lobby_type: number,
+  start_time: number,
+  version: number | null,
+  kills: number,
+  deaths: number,
+  assists: number,
+  skill: number | null,
+  average_rank: number,
+  leaver_status: number,
+  party_size: number
+}
+
 export type TAllAbilities = {
   dname: string;
   behavior: string | string[];
@@ -150,12 +175,12 @@ export type TAllAbilities = {
   bkbpierce: string;
   desc: string;
   attrib:
-    | {
-        key: string;
-        header: string;
-        value: string[] | string | null;
-      }[]
-    | [];
+  | {
+    key: string;
+    header: string;
+    value: string[] | string | null;
+  }[]
+  | [];
   mc: string[] | string | null;
   cd: string | number;
   img: string;

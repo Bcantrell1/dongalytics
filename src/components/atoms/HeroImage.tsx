@@ -11,7 +11,7 @@ type Props = {
 const HeroImage: FC<Props> = ({ image, id,  match }) => {
 
     return (
-        <div className={`w-full hover:scale-125 border border-gray-800 transition-transform rounded ${match} tooltip tooltip-primary capitalize hover:z-20`}>
+        <div className={`w-full hover:scale-125 transition-transform rounded ${match} tooltip tooltip-primary hover:z-20`}>
             {image === null ? (
                 <div className="h-24 w-full bg-indigo-50 animate-pulse"></div>
             ) : (
