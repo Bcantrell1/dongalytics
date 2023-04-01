@@ -13,7 +13,7 @@ passport.deserializeUser(function(obj: any, done: any) {
 
 passport.use(new SteamStrategy({
 	returnURL:`${env.NEXTAUTH_URL}/api/auth/return`,
-	realm: env.NEXTAUTH_URL,
+	realm: `${env.NEXTAUTH_URL}`,
 	apiKey: env.STEAM_API_KEY
 }, async (identifier: any, profile: any, done: any) => {
 	profile.identifier = identifier;
