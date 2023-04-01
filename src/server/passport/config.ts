@@ -16,8 +16,6 @@ passport.use(new SteamStrategy({
 	realm: 'http://localhost:3000',
 	apiKey: env.STEAM_API_KEY
 }, async (identifier: any, profile: any, done: any) => {
-	console.log('identifier', identifier);
-	console.log('profile', profile);
 	profile.identifier = identifier;
 	const userData = {
 		id: profile.id,

@@ -1,25 +1,26 @@
 import type { GetServerSideProps, NextPage } from 'next';
+
 import Loading from '../../components/atoms/Loading';
 import ProfileHeader from '../../components/molecules/ProfileHeader';
+
 import { getServerAuthSession } from '../../server/auth';
 import { api } from '../../utils/api';
 
 const Profile: NextPage = () => {
-  const profile = api.openDota.getProfile.useQuery();
-  const { data, isLoading, isError } = profile;
-  
-  if(isLoading) {
+  const profile = api.openDota.getProfile.useQuery({}, { refetchOnMount: false, refetchOnWindowFocus: false });
+  const { data, isLoading, isError, error} = profile;
+
+  if (isLoading) {
     return <Loading />
   }
-  
-  if(isError) {
-    return <p>Error</p>
+
+  if (isError) {
+    return <p>Error: {error.message}</p>
   }
 
- return (
+  return (
     <main>
-      <pre>{JSON.stringify(profile.data, null, 2)}</pre>
-      <ProfileHeader personaname={data.personaname} settings={false}/>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
     </main>
   );
 
@@ -28,7 +29,7 @@ const Profile: NextPage = () => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await getServerAuthSession(context);
 
-  if(!session || !session?.user?.steamId) {
+  if (!session || !session?.user?.steamId) {
     return {
       redirect: {
         destination: '/login',

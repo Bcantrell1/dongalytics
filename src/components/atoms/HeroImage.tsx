@@ -8,7 +8,7 @@ type Props = {
     match: string;
 }
 
-const HeroImage: FC<Props> = ({ image, id,  match }) => {
+const HeroImage: FC<Props> = ({ image, id, match }) => {
 
     return (
         <div className={`w-full hover:scale-125 transition-transform rounded ${match} tooltip tooltip-primary hover:z-20`}>
@@ -20,7 +20,7 @@ const HeroImage: FC<Props> = ({ image, id,  match }) => {
                         src={`${env.NEXT_PUBLIC_STEAM_IMG_URL}${image}`}
                         className={`w-full h-auto rounded-sm cursor-pointer transition-opacity `}
                         loading="eager"
-                      />
+                    />
                 </Link>
             )}
         </div>

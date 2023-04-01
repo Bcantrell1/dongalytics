@@ -44,13 +44,21 @@ export const api = createTRPCNext<AppRouter>({
           url: `${getBaseUrl()}/api/trpc`,
         }),
       ],
+      queryClientConfig: {
+        defaultOptions: {
+          queries: {
+            refetchOnMount: false,
+            refetchOnWindowFocus: false,
+          },
+        },
+      },
     };
   },
   /**
    * Whether tRPC should await queries when server rendering pages
    * @see https://trpc.io/docs/nextjs#ssr-boolean-default-false
    */
-  ssr: false,
+  ssr: true,
 });
 
 /**

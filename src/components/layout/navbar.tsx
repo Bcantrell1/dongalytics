@@ -53,7 +53,7 @@ const Navbar: NextPage = () => {
         </NavButton>
 
         <NavButton
-          href="matches"
+          href="/matches"
         >
           Matches
         </NavButton>

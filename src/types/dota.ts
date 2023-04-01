@@ -105,22 +105,25 @@ export type THeroTrend = {
   turbo_wins: number;
 };
 
-export type TPublicMatches = {
+export type MatchType = {
   match_id: number;
-  match_seq_num: number;
+  player_slot: number;
   radiant_win: boolean;
-  start_time: number;
   duration: number;
-  avg_mmr: number | null;
-  num_mmr: number | null;
-  lobby_type: number;
   game_mode: number;
-  avg_rank_tier: number;
-  num_rank_tier: number;
-  cluster: number;
-  radiant_team: string;
-  dire_team: string;
+  lobby_type: number;
+  hero_id: number;
+  start_time: number;
+  version: number;
+  kills: number;
+  deaths: number;
+  assists: number;
+  skill: number;
+  average_rank: number;
+  leaver_status: number;
+  party_size: number;
 };
+
 export enum Attributes {
   agi = "Agility",
   str = "Strength",
