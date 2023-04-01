@@ -1,9 +1,8 @@
-import { MatchType } from "../../types/dota";
 import TeamIconLayout from "../molecules/TeamIconLayout";
 
-const MatchHeroes = ({ match }: { match: MatchType }) => {
-    const radiantTeam = match.players.filter((player) => player.player_slot <= 10);
-    const direTeam = match.players.filter((player) => player.player_slot > 10);
+const MatchHeroes = ({ match }: { match: any}) => {
+    const radiantTeam = match.players.filter((player: any) => player.player_slot <= 10);
+    const direTeam = match.players.filter((player: any) => player.player_slot > 10);
 
     return (
         <div className="flex gap-4 p-3 mt-1 items-center rounded flex-col w-full">

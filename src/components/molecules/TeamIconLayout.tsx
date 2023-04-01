@@ -2,11 +2,12 @@ import { env } from "../../env/client.mjs";
 import { HERO_NAMES } from "../../helpers/constants";
 import { THero } from "../../types/dota.js";
 
-const TeamIconLayout = ({ team }) => {
+const TeamIconLayout = ({ team }: {team : any}) => {
 
     return (
         <ul className={`flex gap-2 w-full justify-evenly items-center`}>
-            {team.map((hero) =>  {
+            {team.map((hero: any) =>  {
+            {/*@ts-ignore*/}
                 const heroName: THero = HERO_NAMES[hero.hero_id];
                 return (
                     <li key={`${heroName.id}`} className=" h-8">

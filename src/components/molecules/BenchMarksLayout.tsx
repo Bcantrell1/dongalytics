@@ -15,7 +15,7 @@ const benchmarks = [
 
 function BenchmarksLayout({ matchData }: { matchData: any }) {
     const benchmarksData = benchmarks.map(benchmark => {
-        const benchmarkData = matchData.players.map(player => {
+        const benchmarkData = matchData.players.map((player: any) => {
             return {
                 name: player.personaname ? player.personaname : "Smurf ?",
                 heroId: player.hero_id,
@@ -37,9 +37,10 @@ function BenchmarksLayout({ matchData }: { matchData: any }) {
 
     return (
         <div className="grid gap-3 grid-cols-3 align-middle mx-auto">
-            {benchmarksList.map(benchmark => {
+            {benchmarksList.map((benchmark: any) => {
                 return (
                     <div className="text-center p-2 text-2xs">
+                        {/*@ts-ignore*/}
                         <img src={`${env.NEXT_PUBLIC_STEAM_IMG_URL}${HERO_NAMES[benchmark.heroId].icon}`} className="w-auto h-auto mx-auto object-fill" alt="" />
                         <h2 className="font-bold leading-0 text-base">
                             {benchmark?.name ?? (

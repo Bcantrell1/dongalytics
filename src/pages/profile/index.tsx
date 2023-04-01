@@ -1,12 +1,12 @@
 import type { GetServerSideProps, NextPage } from 'next';
 
 import Loading from '../../components/atoms/Loading';
-import ProfileHeader from '../../components/molecules/ProfileHeader';
 
 import { getServerAuthSession } from '../../server/auth';
 import { api } from '../../utils/api';
 
 const Profile: NextPage = () => {
+  //@ts-ignore
   const profile = api.openDota.getProfile.useQuery({}, { refetchOnMount: false, refetchOnWindowFocus: false });
   const { data, isLoading, isError, error} = profile;
 

@@ -3,7 +3,8 @@ import { getHeroLevel, truncate } from "../../helpers/convert";
 import { THero } from "../../types/dota";
 import HeroIcon from "./HeroIcon";
 
-function MatchPlayerCard({ player }: { player: Player }) {
+function MatchPlayerCard({ player }: { player: any }) {
+    //@ts-ignore
     const heroName: THero = HERO_NAMES[player.hero_id];
     return (
         <div

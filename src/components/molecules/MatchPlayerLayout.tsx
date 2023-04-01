@@ -1,10 +1,9 @@
-import { TTeamMatches } from "../../types/dota";
 import MatchPlayerCard from "../atoms/MatchPlayerCard";
 import BenchmarksLayout from "./BenchMarksLayout";
 
-function MatchPlayerLayout({ matchData }: { matchData: TTeamMatches}) {
-    const radiantPlayers = matchData?.players.filter((player) => player.isRadiant);
-    const direPlayers = matchData?.players.filter((player) => !player.isRadiant);
+function MatchPlayerLayout({ matchData }: { matchData: any}) {
+    const radiantPlayers = matchData?.players.filter((player: any) => player.isRadiant);
+    const direPlayers = matchData?.players.filter((player: any) => !player.isRadiant);
 
     return (
         <>
@@ -12,7 +11,7 @@ function MatchPlayerLayout({ matchData }: { matchData: TTeamMatches}) {
                 <div>
                     <h3 className="text-2xl text-center font-bold text-green-500">{matchData?.radiant_win ? 'Winner' : 'Loser'}</h3>
                 <div className="border-2 rounded border-green-200">
-                    {radiantPlayers.map((player) => (
+                    {radiantPlayers.map((player: any) => (
                         <MatchPlayerCard key={player.player_slot} player={player} />
                     ))}
                 </div>
@@ -20,7 +19,7 @@ function MatchPlayerLayout({ matchData }: { matchData: TTeamMatches}) {
                 <div>
                     <h3 className="text-2xl text-center font-bold text-red-500">{matchData?.radiant_win ? 'Loser' : 'Winner'}</h3>
                 <div className="border-2 rounded border-red-200">
-                    {direPlayers.map((player) => (
+                    {direPlayers.map((player: any) => (
                         <MatchPlayerCard key={player.player_slot} player={player} />
                     ))}
                 </div>

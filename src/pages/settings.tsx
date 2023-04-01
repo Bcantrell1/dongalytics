@@ -6,7 +6,7 @@ const SettingsPage: NextPage = () => {
 
   return (
     <main>
-      <ProfileHeader settings={true} />
+      <ProfileHeader settings={true} personaname=""/>
     </main>
   );
 };
