@@ -1,5 +1,5 @@
 import { calculateHealth } from "../../helpers/convert";
-import { THero } from "../../types/dota";
+import type { THero } from "../../types/dota";
 
 const HeroHealthMana = ({ hero, level }: { hero: THero, level: number }) => {
     const { base_str, str_gain, base_int, int_gain, primary_attr } = hero;
