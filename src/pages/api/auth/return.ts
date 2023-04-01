@@ -12,18 +12,15 @@ export default router
 	.use(path, passport.authenticate('steam', { failureRedirect: '/login' }))
 	.get(path, async (req: NextApiRequest, res: NextApiResponse) => {
 		const session = await unstable_getServerSession(req, res, authOptions);
+		//@ts-ignore
 		const { user } = session;
 		const steamId = await prisma.user.findUnique({ where: { id: user.id } });
-
-		if (user && res.req.user) {
-			console.log("Discord User", user);
-			console.log("Steam User", res.req.user);	
-		}
 
 		if (!steamId?.steamId) {
 			await prisma.user.update({
 				where: { id: user.id },
 				data: { 
+					// @ts-ignore
 					steamId: JSON.stringify(steamID64toSteamID32(res.req.user.id)) 
 			    },
 			});
