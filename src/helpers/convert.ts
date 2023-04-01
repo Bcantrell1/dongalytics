@@ -1,6 +1,5 @@
-import { env } from "../env/client.mjs";
-import { BenchMarkType, THero} from "../types/dota";
-import { ATTRIBUTE_LEVELS, GAME_MODES, HERO_ICONS, XP_LEVEL } from "./constants";
+import { THero} from "../types/dota";
+import { ATTRIBUTE_LEVELS, GAME_MODES, XP_LEVEL } from "./constants";
 
 export function steamID64toSteamID32(steamID64: string) {
     return Number(steamID64.slice(-16)) - 6561197960265728
@@ -27,6 +26,7 @@ export const getHeroLevel = (xp: number) => {
     return 30;
   }
 
+  //@ts-ignore
   if (xp >= 0 && xp <= XP_LEVEL[XP_LEVEL.length - 1]) {
     const tXP = [...XP_LEVEL];
     tXP.push(xp);
@@ -84,11 +84,13 @@ export const calculateHealth = (
   const hpFromStrength = Math.round(
     (str_gain * (level - 1) + base_str) * multiplier
   );
+  //@ts-ignore
   const addedLevels = ATTRIBUTE_LEVELS[level] ?? 0;
   return hpFromStrength + addedLevels + 200;
 };
 
-export function getGameMode(mode) {
+export function getGameMode(mode: any) {
+    // @ts-ignore
     return GAME_MODES[mode].name.split('_').join(' ').toLowerCase();
 }
 
